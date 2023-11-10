@@ -71,9 +71,17 @@ $$x+y=z$$
       // - https://revealjs.com/config/
       Reveal.initialize({
         hash: true,
-
+mathjax3: {
+    mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+    tex: {
+      inlineMath: [ [ '$', '$' ], [ '\\(', '\\)' ]  ]
+    },
+    options: {
+      skipHtmlTags: [ 'script', 'noscript', 'style', 'textarea', 'pre' ]
+    },
+  },
         // Learn about plugins: https://revealjs.com/plugins/
-        plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom,RevealPointer,RevealMath.MathJax3,RevealMath.KaTeX],
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom,RevealPointer,RevealMath.MathJax3],
       });
     </script>
   </body>

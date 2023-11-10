@@ -14,47 +14,165 @@
   <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
   <link rel="stylesheet" href="main.css">
 </head>
-  <body>
-      <script type="text/javascript" src="js/d3.v3.min.js"></script>
-    <div class="reveal">
-      <div class="slides">
-        <section
-          data-markdown
-          data-separator="-----"
-          data-separator-vertical="---"
-        >
-          <textarea data-template>
-            # Title Page
-
-            ### Date
-
-            -----
-            
-            ---
-            
-            ---
-            
-            ---
-            
-            -----
-
-            ## made with
-
-            #### [reveal.js](https://github.com/hakimel/reveal.js)
-
-            #### [excalidraw](https://github.com/excalidraw/excalidraw)
-
-          </textarea>
+<body>
+  <script type="text/javascript" src="js/d3.v3.min.js"></script>
+  <div class="reveal">
+    <div class="slides">
+      <!-- ################################################### -->
+      <!-- ################################################### -->
+      <!-- ################################################### -->
+      <!-- ################################################### -->
+      <!-- ################################################### -->
+      <!-- ################################################### -->
+      <!-- ################################################### -->
+      <!-- ################################################### -->
+      <section>
+        <h1>Reveal.js Presentations</h1>
+        <h2>with example slides that use JavaScript powered real-time animations</h2>
+        <p style="font-size:48px">Jay Newby</p>
+        <p>Assistant Professor</p>
+        <p>University of Alberta</p>
+      </section>
+      <!-- ################################################### -->
+      <!-- ################################################### -->
+      <section>
+        <h2>Info and source code available at https://revealjs.com/ <br>
+          (I am not a contributor)
+        </h2>
+      </section>
+      <!-- ################################################### -->
+      <!-- ################################################### -->
+      <section>
+        <h2>Videos automatically start and stop when the slide is
+          active</h2>
+      </section>
+      <!-- ################################################### -->
+      <!-- ################################################### -->
+      <section data-background="#000" data-state="dark">
+        <h2>A slide with videos that autoplay (intelligently)</h2>
+        <video data-autoplay height="450" loop controls>
+          <source
+            data-src="vid1.mp4">
+          </source>
+        </video>
+        <video data-autoplay height="450" loop controls>
+          <source
+            data-src="vid2.mp4">
+          </source>
+        </video>
+      </section>
+      <!-- ################################################### -->
+      <!-- ################################################### -->
+      <section>
+        <h2>Inline animations can automatically start and stop when the slide is
+          active</h2>
+      </section>
+      <!-- ################################################### -->
+      <!-- ################################################### -->
+      <section data-state="IonSlide">
+        <div id="ionGraphAnimation"></div>
+        <div id="ionChannelAnimation"></div>
+        <leftSide style="width:65%;text-align:center;font-size:16pt">
+          <span style="color:#ff4000">sodium channels (fast)</span> -
+          <span style="color:#0080FF">potassium channels (slow)</span>
+        </leftSide>
+        <rightSide style="width:30%;">
+          <input type="range" id="IappSlider" value="17" min="0" max="20">
+          <span style="font-size:15pt">
+            \(I_{\rm applied}=\) <span id="IappVal"></span>
+          </span>
+        </rightSide>
+        <section style="margin-top:22%">
+          <textBox touch-action="none">
+            <boxTitle>
+              <h3>Stochastic Morris-Lecar</h3>
+            </boxTitle>
+            <p >
+              \[\begin{align}
+              C_{\rm m}\frac{dV}{dt} &= \color{#ff4000}{F_{Na}(t, V)}
+                \bar{g}_{Na}[V_{Na} - V(t)] + \color{#0080FF}{F_{K}(t, V)}
+                \bar{g}_{K}[V_{K} - V(t)] \\
+              &\qquad + I_{\rm leak}(V(t)) + I_{\rm applied}
+              \end{align}\]
+            </p>
+          </textBox>
+          <div style="font-size:18px;margin-left:50px">
+            <p style="text-align:left">J Newby and J Keener. PRE, 2011</br>
+              J Newby, P Bressloff, and J Keener. PRL, 2013</br>
+              J Newby. SIAM Appl Dyn Syst, 2014</p>
+          </div>
         </section>
-<section>
-$$x+y=z$$
-</section>  
-        
-      </div>
-    </div>
-
-
-  <script src="reveal.js/lib/js/head.min.js"></script>
+        <section style="margin-top:20%">
+          <textBox>
+            <boxTitle>
+              <h3>Deterministic Morris-Lecar</h3>
+            </boxTitle>
+            <p>
+              \[\begin{align}
+              C_{\rm m}\frac{dv}{dt} &= \color{#ff4000}{F_{Na}^\infty(v)}
+                \bar{g}_{Na}[V_{Na} - v] + \color{#0080FF}{w}\bar{g}_{K}[V_{K} - v]
+                +  I_{\rm leak}(v) + I_{\rm applied} \\
+              \tau \frac{d\color{#0080FF}{w}}{dt} &= w_\infty(v)
+                - \color{#0080FF}{w}
+              \end{align}\]
+            </p>
+          </textBox>
+        </section>
+        <section style="margin-top:23%">
+          <textBox style="background:#FFF">
+            <boxTitle>
+              <h3 style="font-size:26pt">Phase plane analysis (\(I_{\rm applied}<0.1\))</h3>
+            </boxTitle>
+            <img
+              style="margin:0px;padding:0px;"
+              height="250"
+              src="images/MLpp1.png">
+          </textBox>
+        </section>
+          <section style="margin-top:23%">
+            <textBox style="background:#FFF">
+              <boxTitle>
+                <h3 style="font-size:26pt">Is
+                  <span style="color:#FF8000">stochastic
+                  initiation</span> driven by <u>fast</u> sodium channels?</h3>
+              </boxTitle>
+              <img
+                style="margin:0px;padding:0px;"
+                height="250"
+                src="images/MLpp2.png" >
+            </textBox>
+          </section>
+        </section>
+        <script src="js/ionChannelAnim.js"></script>
+        <!-- ################################################### -->
+        <!-- ################################################### -->
+        <section>
+          <h2>iFrames allow you to isolate your animation code (for modular use),
+            but animations restart by default whenever the slide becomes active
+          </h2>
+        </section>
+        <!-- ################################################### -->
+        <!-- ################################################### -->
+        <section>
+          <h3>Example that uses an iFrame</h3>
+          <iframe
+          class="stretch"
+          data-src="js/stochasticLC/index.html"
+          scrolling="no"></iframe>
+          <div style="font-size:18px;margin-left:50px">
+            <p style="text-align:left">J Newby and MA Schwemmer. PRL, 2014</br>
+              MA Schwemmer and J Newby. Physica D, 2016</p>
+          </div>
+        </section>
+        <!-- ################################################### -->
+        <!-- ################################################### -->
+        </div>
+        </div>
+        <!-- ################################################### -->
+        <!-- ################################################### -->
+        <!-- ################################################### -->
+        <!-- ################################################### -->
+        <script src="reveal.js/lib/js/head.min.js"></script>
         <script src="reveal.js/js/reveal.js"></script>
         <script>
         // Full list of configuration options available here:
@@ -84,7 +202,5 @@ $$x+y=z$$
           }
         });
         </script>
-  
-  
-  </body>
-</html>
+      </body>
+      </html>

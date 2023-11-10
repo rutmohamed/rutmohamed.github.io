@@ -1,74 +1,780 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
+<!doctype html>
+<html lang="en">
+	<head>
 
-    <title>TITLE</title>
+<meta charset="utf-8">
 
-    <link rel="stylesheet" href="reveal.js/dist/reset.css" />
-    <link rel="stylesheet" href="reveal.js/dist/reveal.css" />
-    <link rel="stylesheet" href="reveal.js/dist/theme/solarized.css" id="theme" />
+		<title>Limits</title> <link rel="icon" type="image/x-icon" href="calculus.ico">
 
-    <!-- Theme used for syntax highlighted code -->
-    <link
-      rel="stylesheet"
-      href="reveal.js/plugin/highlight/monokai.css"
-      id="highlight-theme"
-    />
-  </head>
-  <body>
-    <div class="reveal">
-      <div class="slides">
-        <section
-          data-markdown
-          data-separator="-----"
-          data-separator-vertical="---"
-        >
-          <textarea data-template>
-            # Title Page
+		<meta name="description" content="Limits">
+		<meta name="author" content="Mohamed Khaled Khalifa">
 
-            ### Date
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-            -----
-            
-            ---
-            
-            ---
-            
-            ---
-            
-            -----
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            ## made with
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
 
-            #### [reveal.js](https://github.com/hakimel/reveal.js)
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">		
 
-            #### [excalidraw](https://github.com/excalidraw/excalidraw)
 
-          </textarea>
-        </section>
-      </div>
-    </div>
+<style>
 
-    <script src="reveal.js/dist/reveal.js"></script>
-    <script src="reveal.js/plugin/notes/notes.js"></script>
-    <script src="reveal.js/plugin/markdown/markdown.js"></script>
-    <script src="reveal.js/plugin/highlight/highlight.js"></script>
-    <script src="reveal.js/plugin/zoom/zoom.js"></script>
-    <script>
-      // More info about initialization & config:
-      // - https://revealjs.com/initialization/
-      // - https://revealjs.com/config/
-      Reveal.initialize({
-        hash: true,
+/* css handles the parentheses/brackets */
+    .laparent ol { counter-reset: item }
+    .laparent li { display: block ; counter-increment: item; }
+    /* replace the counter before list item with
+              open parenthesis + counter + close parenthesis */
+    .laparent li:before { content: " (" counter(item,lower-alpha) ") "; }
 
-        // Learn about plugins: https://revealjs.com/plugins/
-        plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom],
-      });
-    </script>
-  </body>
+p {
+  font-size: 0.7em;
+    line-height: 1.2em;
+    vertical-align: center;
+}
+
+#block {
+  background: #848B79;
+  color: black;
+  padding: 15px;
+  width: "device-width";
+border-left: 10px solid Tomato;
+font-size: 0.7em;
+line-height: 1.2em;
+    vertical-align: center;
+}
+}
+
+#thm {
+  background: #33ECFF;
+  color: black;
+  padding: 15px;
+  width: 100%;
+border-left: 10px solid #5B2C6F;
+}
+
+
+#thm:before{
+    content:"Theorem.\00a0\00a0";
+    float:left;
+    font-weight:bold;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+flex-direction: row;
+align-items: center;
+font-size: 0.7em;
+line-height: 1.2em;
+    vertical-align: center;
+
+}
+
+</style>
+</head>
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+
+<section>
+<h1> Limits </h1>
+</section>
+
+<section>
+<h4 align="justify"> Intuitive Meaning: </h4>
+
+
+<p align="justify">The exprerssion $\displaystyle\lim_{x\to a}f(x)= L$ roughly means:
+</p>
+
+<div id="block" align="justify">
+<ol align="justify">
+<span class="fragment fade-up" data-fragment-index="1"> <li> The input $x$ can be arbitrarly approximated to $a$ (bigger and smaller).
+</li></span>
+  <span class="fragment fade-up" data-fragment-index="2"> <li> If the input $x\approx a$, then the output $f(x)\approx L$.</li></span>
+  <span class="fragment fade-up" data-fragment-index="3"> <li>The error in $f(x)\approx L$ can be made <span class="fragment highlight-current-red" data-fragment-index="3"> as small as desired </span> by making the error in $x\approx a$ small enough (not neccessarily zero).</li></span>
+</ol>
+</div>
+
+<p align="center">
+<span class="fragment fade-in" data-fragment-index="4"> <span class="fragment highlight-blue" data-fragment-index="4"> <b>As the input $x$ approaches $a$, the output $f(x)$ approaches $L$.</b></span></span>
+</p>
+</section>
+
+<section>
+
+$$\lim_{x\to a}f(x)=L$$
+
+<iframe scrolling="no" title="Limit Definition" src="https://www.geogebra.org/material/iframe/id/uxgqktwv/width/auto/height/auto/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" width="697px" height="350px" allowfullscreen style="border:0px;"> </iframe>
+</section>
+
+<section>
+$$\displaystyle\lim_{\class{fragment highlight-current-red}{\data{fragment-index=4}{x\to}} \class{fragment highlight-current-green}{\data{fragment-index=2}{a}}}f(x) =  \class{fragment highlight-current-blue}{\data{fragment-index=3}{L}} $$
+
+<p align="justify">
+<span class="fragment fade-in" data-fragment-index="1"> Remember:</span>
+</p>
+
+<div class='container'>
+<ul align="justify">
+<span class="fragment fade-in" data-fragment-index="2"> <li> <span class="fragment highlight-current-green" data-fragment-index="2"> $a$ is not neccessarily a valid input. </span></li> </span>
+<span class="fragment fade-in" data-fragment-index="3"> <li> <span class="fragment highlight-current-blue" data-fragment-index="3"> $L$ is not neccessarily a valid output.</span></li></span>
+<span class="fragment fade-in" data-fragment-index="4"> <li> <span class="fragment highlight-current-red" data-fragment-index="4"> $f(x)$ is defined near $a$ from right and left. </span></li> </span>
+</ul>
+</div> 
+</section>
+
+<section>
+
+$$\displaystyle\lim_{\class{fragment highlight-green}{\data{fragment-index=2}{x\to a}}}f(x) =  \class{fragment highlight-blue}{\data{fragment-index=5}{L}} $$
+
+<p align="justify">
+<span class="fragment fade-in" data-fragment-index="1"> Moreover:</span>
+</p>
+
+<div class='container'>
+<ul align="justify">
+
+<span class="fragment fade-in" data-fragment-index="2"><li> <span class="fragment highlight-current-green" data-fragment-index="2"> The error in $x\approx a$ equals to the absolute difference between $x$ and $a$.</span> <span class="fragment fade-in" data-fragment-index="3"> <span class="fragment highlight-current-green" data-fragment-index="3"> The bound of this error is denoted by $\delta$.</span></span> <span class="fragment fade-in" data-fragment-index="4"> <span class="fragment highlight-current-green" data-fragment-index="4"> So, we write $\big\vert x-a\big\vert<\delta$.</span></span>
+</li></span>
+<span class="fragment fade-in" data-fragment-index="5"><li> <span class="fragment highlight-current-blue" data-fragment-index="5"> The error in $f(x)\approx L$ equals to the absolute difference between $f(x)$ and $L$.</span> <span class="fragment fade-in" data-fragment-index="6"> <span class="fragment highlight-current-blue" data-fragment-index="6"> Its bound is denoted by $\epsilon$.</span></span> <span class="fragment fade-in" data-fragment-index="7"> <span class="fragment highlight-current-blue" data-fragment-index="7"> So, we write $\big\vert f(x)-L\big\vert<\delta$.</span></span>
+</li></span>
+</ul>
+</div> 
+</section>
+
+<section>
+
+<h4 align="justify"> Formal Definition: </h4>
+
+<p align="justify">
+The expression $\displaystyle\lim_{x\to a}f(x)=L$ is formally defined as follows:
+</p>
+<div id="block" align="justify">
+<ul>
+<span class="fragment fade-in" data-fragment-index="1"> <li> $f(x)$ defined on an open interval about $a$, except possibly at $a$.</li></span>
+<span class="fragment fade-in" data-fragment-index="2"> <li><span class="fragment fade-in" data-fragment-index="2"> <span class="fragment highlight-current-blue" data-fragment-index="2"> For every $\epsilon > 0$</span>,</span> <span class="fragment fade-in" data-fragment-index="3"> <span class="fragment highlight-current-green" data-fragment-index="3">there is $\delta > 0$</span> such that </span> 
+<span class="fragment fade-in" data-fragment-index="4">
+$$\left(0<\big\vert x-a\big\vert<\delta \implies \big\vert f(x)-L\big\vert<\epsilon\right),$$</span>
+<span class="fragment fade-in" data-fragment-index="5">
+for every $x$ in the domain of $f$.</span></li></span>
+</ul>
+</div>
+<div align="justify">
+<ul align="justify">
+<span class="fragment fade-in" data-fragment-index="2"> <li> <p class="fragment highlight-current-blue" data-fragment-index="2"> $\epsilon$ is any desired error for $f(x)\approx L$.</p> </li></span>
+<span class="fragment fade-down" data-fragment-index="3"><li> <p class="fragment highlight-current-green" data-fragment-index="3"> $\delta$ is a designated error for $x\approx a$. <span class="fragment fade-down" data-fragment-index="6"> <span class="fragment highlight-current-red" data-fragment-index="6"> ($\delta$ depends on the choice of $\epsilon$)</span></span></p> </li></span>
+</ul>
+</div>
+</section>
+
+
+
+<section>
+<section>
+
+<h4 align="justify"> Example: </h4>
+
+<div id="block" align="justify">
+Prove, by definition, that 
+$$\lim_{x\to 2}\left(2x-1\right)=3.$$
+</div>
+</section>
+
+<section>
+<h4 align="justify"> Solution: </h4>
+<p align="justify"> Let $\epsilon>0$ be arbitrary (representing any desirable error in the output). We need to find $\delta>0$ such that 
+$$0<\big\vert x-2\big\vert<\delta\implies \big\vert(2x-1)-3\big\vert<\epsilon.$$
+</p>
+
+</section>
+<section>
+<h6 align="justify"> Step 1:</h6>
+<p align="justify">
+Solve the inequality in the right-hand side of $\implies$.
+
+$$\begin{aligned}\big\vert(2x-1)-3\big\vert<\epsilon \implies & \big\vert 2x-4\big\vert<\epsilon\\
+  \implies & \big\vert 2(x-2)\big\vert<\epsilon\\
+\implies & 2\cdot \big\vert x-2\big\vert<\epsilon\\
+\implies & \big\vert x-2\big\vert<\frac{\epsilon}{2}\\
+\end{aligned}$$
+
+The solution set is the open interval that is centered at $2$ and has radius $\displaystyle\frac{\epsilon}{2}$.
+</p>
+
+</section>
+
+<section>
+<h6 align="justify"> Step 2:</h6>
+<p align="justify">
+Note that $\big\vert x-2\big\vert< \delta$ is the open interval that is centered at $2$ and whose radius is $\delta$. We need to find a suitable radius $\delta$ such that we guarantee that the open interval $\big\vert x-2\big\vert< \delta$ is included completely inside the solution of the inequality in the previuous step. So, we may take $$\displaystyle\delta=\frac{\epsilon}{2}.$$
+</p>
+</section>
+
+<section>
+<h6 align="justify"> Step 3:</h6>
+<p align="justify">
+We need to prove that our choice $\displaystyle\delta=\frac{\epsilon}{2}$ is indeed suitable to guarantee the implication $\implies$. For this aim, let $x$ be any element in the domain of $f$, then
+
+$$\begin{aligned}
+\big\vert x-2\big\vert<\delta \implies & \big\vert x-2\big\vert<\frac{\epsilon}{2}\\
+\implies & 2\cdot \big\vert x-2\big\vert<\epsilon\\
+\implies & \big\vert 2(x-2)\big\vert<\epsilon\\
+\implies & \big\vert 2x-4\big\vert<\epsilon\\
+\implies & \big\vert(2x-1)-3\big\vert<\epsilon,
+\end{aligned}$$
+and hence the proof is established. 
+</p>
+</section>
+</section>
+
+
+<section>
+<section>
+
+<h4 align="justify"> Example: </h4>
+
+<div id="block" align="justify">
+For the limit  
+$$\lim_{x\to 5}\sqrt{x-1}=2,$$
+find $\delta>0$ that works for $\epsilon=1$.
+</div>
+</section>
+<section>
+<h4 align="justify"> Solution: </h4>
+<p align="justify"> We need to find $\delta>0$ such that 
+$$0<\big\vert x-5\big\vert<\delta\implies \big\vert\sqrt{x-1}-2\big\vert<1.$$
+</p>
+</section>
+
+<section>
+<h6 align="justify"> Step 1:</h6>
+<p align="justify">
+Solve the inequality in the right-hand side of $\implies$.
+
+$$\begin{aligned}\big\vert\sqrt{x-1}-2\big\vert<1 \implies & -1< \sqrt{x-1}-2< 1\\
+  \implies & 1< \sqrt{x-1}< 3\\
+\implies & 1< x-1< 9\\
+\implies & 2< x < 10\\
+\end{aligned}$$
+
+The solution set is the open interval $(2,10)$.
+</p>
+
+</section>
+
+<section>
+<h6 align="justify"> Step 2:</h6>
+<p align="justify">
+We need to find $\delta>0$ that places the interval $\big\vert x-5\big\vert\leq \delta$ (centered at $5$) inside the interval $(2,10)$. The distance from $5$ to the nearer endpoint of $(2, 10)$ is $3$. If we take $\delta=3$ or any smaller positive number, then the inequality $\big\vert x-5\big\vert<\delta$ will automatically place $x$ between $2$ and $10$.
+</p>
+</section>
+
+<section>
+<h6 align="justify"> Step 3:</h6>
+<p align="justify">
+Let $x$ be any element in the domain of $f$, then
+
+$$\begin{aligned}
+\big\vert x-5\big\vert<\delta \implies & \big\vert x-5\big\vert<3\\
+\implies & -3 < x-5 < 3\\
+\implies & 2 < x < 8\\
+\implies & 2 < x < 10\\
+\implies & 1 < x-1 < 9\\
+\implies & 1 < \sqrt{x-1} < 3\\
+\implies & -1 < \sqrt{x-1}-2 < 1\\
+\implies & \big\vert\sqrt{x-1}-2\big\vert<1\\
+\end{aligned}$$
+</p>
+</section>
+
+
+</section>
+
+
+<section>
+<h2> Calculating Limits </h2>
+</section>
+
+
+<section>
+<h4 align="justify"> Theorem: (Limits of Polynomials) </h4>
+
+<div id="block" align="justify">
+If $P(x) = b_n\cdot x^n + b_{n-1}\cdot x^{n-1} + \cdot + b_0$, then
+$$\lim_{x\to a}P(x) = b_n\cdot a^n + b_{n-1}\cdot a^{n-1} + \cdot + b_0.$$
+</div>
+
+<br> 
+<span class="fragment fade-in" data-fragment-index="1"> <p>So, limits of polynomials can be calculated by direct substitution. </p></span>
+
+</section>
+
+<section>
+<section>
+<h4 align="justify"> Example: </h4>
+
+<div id="block" align="justify">
+Evaluate
+$$\lim_{x\to -1}x^3+4x^2-3.$$
+</div>
+
+</section>
+<section>
+<h4 align="justify"> Solution: </h4>
+<p align="justify"> 
+$$\lim_{x\to -1}x^3+4x^2-3=(-1)^3+4(-1)^2-3=0.$$
+</p>
+</section>
+</section>
+
+
+<section>
+<h4 align="justify"> Theorem: (Limits of Rational Functions) </h4>
+
+<div id="block" align="justify">
+If $P(x)$ and $Q(x)$ are polynomials and $Q(a)\not=0$, then
+$$\lim_{x\to a}\frac{P(x)}{Q(x)}=\frac{P(a)}{Q(a)}.$$
+</div>
+<br>
+<span class="fragment fade-in" data-fragment-index="1"> <p>So, limits of rational functions can be calculated by direct substitution if the denominator is not equal to zero.</p></span>
+
+</section>
+
+<section>
+<section>
+<h4 align="justify"> Example: </h4>
+
+<div id="block" align="justify">
+Evaluate
+$$\lim_{x\to -1}\frac{x^3+4x^2-3}{x^2+5}.$$
+</div>
+</section>
+<section>
+<h4 align="justify"> Solution: </h4>
+<p align="justify"> 
+$$\lim_{x\to -1}\frac{x^3+4x^2-3}{x^2+5}=\frac{(-1)^3+4(-1)^2-3}{(-1)^2+5}=\frac{0}{6}=0.$$
+</p>
+</section>
+</section>
+
+<section>
+<div id="block" align="justify">
+If the value of the limit <span class="fragment highlight-green" data-fragment-index="2"> can't be uniquely determined</span>, or if <span class="fragment highlight-green" data-fragment-index="3"> it is not a real number</span>, then the limit <span class="fragment highlight-blue" data-fragment-index="4"> does not exist</span>.
+</div>
+<br>
+$$\displaystyle\lim_{x\to a}f(x)= \class{fragment highlight-current-blue}{\data{fragment-index=4}{\text{D.N.E.}}}$$
+</section>
+
+<section>
+<section>
+<h4 align="justify"> Example: </h4>
+
+<div id="block" align="justify">
+Evaluate
+$$\lim_{x\to 1}\frac{1}{x-1}.$$
+</div>
+</section>
+<section>
+<h4 align="justify"> Solution: </h4>
+<p align="justify"> 
+$$\lim_{x\to 1}\frac{1}{x-1}=\frac{1}{(1)-1}=\frac{1}{0}=\text{undefined}.$$
+So, the limit does not exist.
+</p>
+</section>
+</section>
+
+<section>
+<h4 align="justify">Be Careful:</h4>
+<span class="fragment fade-in" data-fragment-index="1">
+<div class='container'>
+$$\frac{1}{0}=\text{undefined}$$
+$$\frac{0}{0}=\text{indeterminant}$$
+</div></span>
+<span class="fragment fade-in" data-fragment-index="2">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BRRolKTlF6Q?si=JHp8-lz60iOOlDof" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></span>
+</section>
+
+
+<section>
+<h4 align="justify"> Rational Functions with Zero Denominators</h4>
+
+<div id="block" align="justify">
+If $Q(x)$ is a polynomial, and $Q(a)=0$, then 
+$$Q(x)=(x-a)\cdot R(x)$$
+for some polynomial $R(x)$.
+</div>
+<br>
+<span class="fragment fade-in" data-fragment-index="1"> <p>So, if the denominator of a rational function is zero, then canceling common factors in the numerator and
+denominator may reduce the fraction to one whose denominator is no longer zero.</p></span>
+
+</section>
+
+
+<section>
+<section>
+<h4 align="justify"> Example: </h4>
+
+<div id="block" align="justify">
+Evaluate
+$$\lim_{x\to 1}\frac{x^2+x-2}{x^2-x}.$$
+</div>
+</section>
+<section>
+<h4 align="justify"> Solution: </h4>
+<p align="justify"> 
+$$\lim_{x\to 1}\frac{x^2+x-2}{x^2-x}=\frac{(1)^2+(1)-2}{(1)^2-1}=\frac{0}{0}=\text{indeterminant}$$
+
+</p>
+
+</section>
+
+<section>
+<p align="justify"> 
+$$\begin{aligned}
+\lim_{x\to 1}\frac{x^2+x-2}{x^2-x}= & \lim_{x\to 1}\frac{(x-1)(x+2)}{x(x-1)}\\
+= & \lim_{x\to 1}\frac{\cancel{(x-1)}(x+2)}{x\cancel{(x-1)}}\\
+= & \lim_{x\to 1}\frac{(x+2)}{x}\\
+= & \frac{(1)+2}{(1)}\\
+= &  \hspace{0.3cm} 3
+\end{aligned}$$
+
+So, the limit exists and is equal to $3$.
+</p>
+</section>
+
+</section>
+
+<section>
+<h4 align="justify"> Theorem: </h4>
+<p align="justify"> If $\displaystyle\lim_{x\to a}f(x)=L$ and $\displaystyle\lim_{x\to a}g(x)=M$, then
+</p>
+<div id="block" align="justify">
+<ol align="justify">
+<span class="fragment fade-in" data-fragment-index="1"> <li> $\displaystyle\lim_{x\to a}\left(f(x)\pm g(x)\right)=L\pm M$
+</li></span><br>
+<span class="fragment fade-in" data-fragment-index="2"><li> $\displaystyle\lim_{x\to a}\left(f(x)\cdot g(x)\right)=L\cdot M$
+</li></span><br>
+<span class="fragment fade-in" data-fragment-index="3"><li> $\displaystyle\lim_{x\to a}\left(\frac{f(x)}{g(x)}\right)=\frac{L}{M}$,  <span style="margin-left:30px"> if $M\not=0$</span>
+</li></span>
+</ol>
+</div>
+</section>
+<section>
+<h4 align="justify"> Theorem: </h4>
+<p align="justify"> If $\displaystyle\lim_{x\to a}f(x)=L$ and $\displaystyle\lim_{x\to a}g(x)=M$, then
+</p>
+<div id="block" align="justify">
+<ol align="justify" start="4">
+<span class="fragment fade-in" data-fragment-index="1"><li> $\displaystyle\lim_{x\to a}\left(k\cdot f(x)\right)=k\cdot L$
+</li></span><br>
+<span class="fragment fade-in" data-fragment-index="2"><li> $\displaystyle\lim_{x\to a}\left(f(x)\right)^n=L^n$, <span style="margin-left:30px"> $n$ is a positive integer</span>
+</li></span><br>
+<span class="fragment fade-in" data-fragment-index="3"><li> $\displaystyle\lim_{x\to a}\sqrt[n]{f(x)}=\sqrt[n]{L}$, <span style="margin-left:30px"> $n$ is a positive integer, and if $n$ is even, then we assume that $L>0$</span>
+</li></span>
+</ol>
+</div>
+</section>
+
+
+<section>
+<section>
+<h4 align="justify"> Example: </h4>
+
+<div id="block" align="justify">
+Evaluate
+$$\lim_{x\to -2}\sqrt{4x^2-3}.$$
+</div>
+
+</section>
+
+<section>
+
+<h4 align="justify"> Solution: </h4>
+<p align="justify"> 
+$$\lim_{x\to -2}\sqrt{4x^2-3}=\sqrt{4(-2)^2-3}=\sqrt{16-3}=\sqrt{13}.$$
+</p>
+
+</section>
+</section>
+
+<section>
+<section>
+<h4 align="justify"> Example: </h4>
+
+<div id="block" align="justify">
+Evaluate
+$$\lim_{x\to 0}\frac{\sqrt{x^2+100}-10}{x^2}.$$
+</div>
+
+</section>
+
+<section>
+<h4 align="justify"> Solution: </h4>
+<p align="justify"> 
+$$\lim_{x\to 0}\frac{\sqrt{x^2+100}-10}{x^2}=\frac{\sqrt{(0)^2+100}-10}{(0)^2}=\frac{0}{0}=ind.$$
+</section>
+<section>
+<p align="justify"> 
+$$\begin{aligned}
+\lim_{x\to 0}\frac{\sqrt{x^2+100}-10}{x^2}= & \lim_{x\to 0}\frac{\sqrt{x^2+100}-10}{x^2}\times \frac{\sqrt{x^2+100}+10}{\sqrt{x^2+100}+10}\\
+= & \lim_{x\to 0}\frac{\left(\sqrt{x^2+100}-10\right)\cdot \left(\sqrt{x^2+100}+10\right)}{x^2\cdot \left(\sqrt{x^2+100}+10\right)}\\
+= & \lim_{x\to 0}\frac{\left(\sqrt{x^2+100}\right)^2-\left(10\right)^2}{x^2\cdot \left(\sqrt{x^2+100}+10\right)}\\
+= & \lim_{x\to 0}\frac{\left(x^2+100\right)-100}{x^2\cdot \left(\sqrt{x^2+100}+10\right)}\\
+= & \lim_{x\to 0}\frac{\left(x^2+\cancel{100}\right)-\cancel{100}}{x^2\cdot \left(\sqrt{x^2+100}+10\right)}
+\end{aligned}$$
+</p>
+</section>
+<section>
+<p align="justify"> 
+$$\begin{aligned}
+= & \lim_{x\to 0}\frac{x^2}{x^2\cdot \left(\sqrt{x^2+100}+10\right)}\\
+= & \lim_{x\to 0}\frac{\cancel{x^2}}{\cancel{x^2}\cdot \left(\sqrt{x^2+100}+10\right)}\\
+= & \lim_{x\to 0}\frac{1}{\sqrt{x^2+100}+10}\\
+= & \frac{1}{\sqrt{(0)^2+100}+10}\\
+= &  \hspace{0.3cm} \frac{1}{20}
+\end{aligned}$$
+
+</section>
+</section>
+
+
+<section>
+<section>
+<h4 align="justify"> Example: </h4>
+
+<div id="block" align="justify">
+Evaluate
+$$\lim_{x\to 0}\frac{\frac{1}{x-1}+\frac{1}{x+1}}{x}.$$
+</div>
+
+</section>
+<section>
+<h4 align="justify"> Solution: </h4>
+<p align="justify"> 
+$$\lim_{x\to 0}\frac{\frac{1}{x-1}+\frac{1}{x+1}}{x}=\frac{\frac{1}{(0)-1}+\frac{1}{(0)+1}}{(0)}=\frac{0}{0}=ind.$$
+</p>
+</section>
+<section>
+<p align="justify"> 
+$$\begin{aligned}
+\lim_{x\to 0}\frac{\frac{1}{x-1}+\frac{1}{x+1}}{x} = & \lim_{x\to 0}\left(\frac{1}{x-1}+\frac{1}{x+1}\right)\cdot \frac{1}{x}\\
+= & \lim_{x\to 0}\left(\frac{(x+1)+(x-1)}{(x-1)(x+1)}\right)\cdot \frac{1}{x}\\
+= & \lim_{x\to 0}\left(\frac{(x+\cancel{1})+(x-\cancel{1})}{(x-1)(x+1)}\right)\cdot \frac{1}{x}\\
+= & \lim_{x\to 0}\left(\frac{2x}{(x-1)(x+1)}\right)\cdot \frac{1}{x}\\
+= & \lim_{x\to 0}\left(\frac{2x}{x^2-1}\right)\cdot \frac{1}{x}
+\end{aligned}$$
+</p>
+
+</section>
+<section>
+<p align="justify"> 
+$$\begin{aligned}
+= & \lim_{x\to 0}\left(\frac{2\cancel{x}}{x^2-1}\right)\cdot \frac{1}{\cancel{x}}\\
+= & \lim_{x\to 0}\left(\frac{2}{x^2-1}\right)\cdot 1\\
+= & \lim_{x\to 0}\frac{2}{x^2-1}\\
+= & \frac{2}{(0)^2-1}\\
+= &  \hspace{0.3cm} -2
+\end{aligned}$$
+</p>
+</section>
+</section>
+
+<section>
+<h4 align="justify"> Sandwich Theorem: </h4>
+
+<div id="block" align="justify">
+
+<span class="fragment fade-in" data-fragment-index="1"> Suppose that $g(x)\leq f(x) \leq h(x)$ for all $x$ in some open interval containing $a$, except possibly at $x=a$ itself.</span> <span class="fragment fade-in" data-fragment-index="2"> If 
+$$\lim_{x\to a}g(x)=\lim_{x\to a}h(x)=L,$$</span>
+<span class="fragment fade-in" data-fragment-index="3">then $\displaystyle\lim_{x\to a}f(x)=L$.</span>
+</div>
+</section>
+
+<section>
+
+<iframe scrolling="no" title="Sandwich Theorem" src="https://www.geogebra.org/material/iframe/id/jmcqdswq/width/auto/height/auto/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" width="697px" height="350px" allowfullscreen style="border:0px;"> </iframe>
+
+<br>
+<p> 
+<span class="fragment fade-in" data-fragment-index="1">
+$$\lim_{x\to a}h(x)=\lim_{x\to a}g(x)=L \implies \lim_{x\to a}f(x)=L$$
+</span>
+</p>
+</section>
+
+<section>
+<h2> Limits From Graphs </h2>
+</section>
+
+<section>
+<iframe scrolling="no" title="Exist (A)" src="https://www.geogebra.org/material/iframe/id/wmnaqbpr/width/auto/height/auto/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" width="598px" height="300px" allowfullscreen style="border:0px;"> </iframe><br>
+<p> 
+<span class="fragment fade-in" data-fragment-index="1">$$\lim_{x\to a}f(x)=L$$</span>
+</p>
+</section>
+
+<section>
+<iframe scrolling="no" title="Exist (B)" src="https://www.geogebra.org/material/iframe/id/gbx66zjf/width/auto/height/auto/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" width="598px" height="300px" allowfullscreen style="border:0px;"> </iframe><br>
+<p> 
+<span class="fragment fade-in" data-fragment-index="1">$$\lim_{x\to a}f(x)=L$$</span>
+</p>
+</section>
+
+<section>
+<iframe scrolling="no" title="Exist (C)" src="https://www.geogebra.org/material/iframe/id/ux3kfrv6/width/auto/height/auto/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" width="598px" height="300px" allowfullscreen style="border:0px;"> </iframe><br>
+<p> 
+<span class="fragment fade-in" data-fragment-index="1">$$\lim_{x\to a}f(x)=L$$</span>
+</p>
+</section>
+
+<section>
+<h4 align="justify"> Limit exists: </h4>
+<p align="justify"> <span class="fragment fade-in" data-fragment-index="1"> If the function $f(x)$ is defined near $x=a$ from both sides (left and right),</span> <span class="fragment fade-in" data-fragment-index="2"> and one of the following is true:</span>
+</p>
+<div id="block" align="justify">
+<ol align="justify">
+<span class="fragment fade-in" data-fragment-index="3"> <li> There is <span class="fragment highlight-current-red" data-fragment-index="3"> no hole and no jumb </span> in the graph at $x=a$. </li></span>
+<span class="fragment fade-in" data-fragment-index="4"><li> There is a <span class="fragment highlight-current-red" data-fragment-index="4"> hole (no jump) </span> in the graph at $x=a$ with another point for a different value of the function at $x=a$.</li></span>
+<span class="fragment fade-in" data-fragment-index="5"> <li> There is <span class="fragment highlight-current-red" data-fragment-index="5"> a hole (no jump) </span> in the graph at $x=a$ with no other point for a value of the function at $x=a$.</li></span>
+</ol>
+</div>
+</section>
+
+
+<section>
+<iframe scrolling="no" title="DN Exist (A)" src="https://www.geogebra.org/material/iframe/id/uuvjdu8z/width/auto/height/auto/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" width="598px" height="300px" allowfullscreen style="border:0px;"> </iframe>
+<br>
+<p> 
+<span class="fragment fade-in" data-fragment-index="1">$$\lim_{x\to a}f(x)\hspace{0.5cm}\text{Does not exist}.$$</span>
+</p>
+
+</section>
+
+<section>
+<iframe scrolling="no" title="DN Exist (B)" src="https://www.geogebra.org/material/iframe/id/w3nkwbpv/width/auto/height/auto/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" width="598px" height="300px" allowfullscreen style="border:0px;"> </iframe><br>
+<p> 
+<span class="fragment fade-in" data-fragment-index="1">$$\lim_{x\to a}f(x)\hspace{0.5cm}\text{Does not exist}.$$</span>
+</p>
+</section>
+
+<section>
+<iframe scrolling="no" title="DN Exist (C)" src="https://www.geogebra.org/material/iframe/id/yxqnhxt6/width/auto/height/auto/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" width="598px" height="300px" allowfullscreen style="border:0px;"> </iframe>
+<br>
+<p> 
+<span class="fragment fade-in" data-fragment-index="1">$$\lim_{x\to a}f(x)\hspace{0.5cm}\text{Does not exist}.$$</span>
+</p>
+</section>
+
+<section>
+<iframe scrolling="no" title="DN Exist (D)" src="https://www.geogebra.org/material/iframe/id/mghgfjm4/width/auto/height/auto/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" width="598px" height="300px" allowfullscreen style="border:0px;"> </iframe><br>
+<p> 
+<span class="fragment fade-in" data-fragment-index="1">$$\lim_{x\to a}f(x)\hspace{0.5cm}\text{Does not exist}.$$</span>
+</p>
+</section>
+
+<section>
+<iframe scrolling="no" title="DN Exist (E)" src="https://www.geogebra.org/material/iframe/id/sfrz7kvk/width/auto/height/auto/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" width="598px" height="300px" allowfullscreen style="border:0px;"> </iframe>
+<br>
+<p> 
+<span class="fragment fade-in" data-fragment-index="1">$$\lim_{x\to a}f(x)\hspace{0.5cm}\text{Does not exist}.$$</span>
+</p>
+</section>
+
+
+<section>
+<h4 align="justify"> Limit does not exist: </h4>
+
+
+<p align="justify"> <span class="fragment fade-in" data-fragment-index="1"> If one (or more) of the following is true:</span>
+</p>
+
+<div id="block" align="justify">
+<ol align="justify">
+<span class="fragment fade-in" data-fragment-index="2"> <li> $f(x)$ is <span class="fragment highlight-current-red" data-fragment-index="2"> not </span> defined near $x=a$ from one side (right or left).
+</li></span>
+<span class="fragment fade-in" data-fragment-index="3"><li> There is a <span class="fragment highlight-current-red" data-fragment-index="3"> jump </span> in the graph of $f(x)$ at $x=a$.</li>
+<span class="fragment fade-in" data-fragment-index="4"><li> $f(x)$ <span class="fragment highlight-current-red" data-fragment-index="4"> oscillates </span> between two or more values as $x$ approaches $a$. </li>
+<span class="fragment fade-in" data-fragment-index="5"><li> The graph of $f(x)$ is getting closer to a <span class="fragment highlight-current-red" data-fragment-index="5"> vertical line </span> as $x$ approaches $a$ from one side (or both).</li>
+</ol>
+</div>
+</section>
+
+
+
+
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/zoom/zoom.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/search/search.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/pointer/pointer.js"></script>
+		<link rel="stylesheet" href="plugin/pointer/pointer.css" />
+		<script src="plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+mathjax3: {
+  mathjax: "https://cdn.jsdelivr.net/npm/mathjax@4.0.0-alpha.1/es5/tex-mml-chtml.js",
+  loader: {
+    load: ['[tex]/html'],
+},
+  tex: {
+    packages: {
+      '[+]': ['html']
+},},
+  },
+
+				controls: true,
+				controlsTutorial: true,
+				controlsBackArrows: 'faded',
+				progress: true,
+				slideNumber: false,
+				jumpToSlide: true,
+				pause: true,
+sortFragmentsOnSync: false,
+
+
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 1,
+  maxScale: 1,
+
+pointer: {
+    key: "q", // key to enable pointer, default "q", not case-sensitive
+    color: "red", // color of a cursor, default "red" any valid CSS color
+    opacity: 0.4, // opacity of cursor, default 0.8
+    pointerSize: 40, // pointer size in px, default 12
+    alwaysVisible: false, // should pointer mode be always visible? default "false"
+    tailLength: 10, // NOT IMPLEMENTED YET!!! how long the "tail" should be? default 10
+  },
+
+
+dependencies: [
+		{ src: 'plugin/mouse-pointer/mouse-pointer.js', async: true }, 
+	],
+
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ,RevealPointer,RevealMath.MathJax3, RevealMath.KaTeX ],
+
+
+			});
+		</script>
+	</body>
 </html>
